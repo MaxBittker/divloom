@@ -1,0 +1,123 @@
+<html>
+  <head> <title>divloom</title>
+        <head> </head>
+  <script>
+
+let content = ""
+
+function div(){
+content+="<div>"
+document.getElementById("loom").innerHTML= content;
+}
+function endiv(){
+content+="</div>"
+content+="</div>"
+content+="</div>"
+content+="</div>"
+content+="<div>"
+
+document.getElementById("loom").innerHTML= content;
+}
+document.addEventListener("keydown",(e)=>{
+        console.log(e.key)
+        if(e.key === "Enter"){
+        content+=`<input type="radio">`;
+        document.getElementById("loom").innerHTML= content;
+
+
+        }if(e.key === " "){
+        content+=` `;
+        document.getElementById("loom").innerHTML= content;
+
+
+        }
+        
+        
+        else
+        if(e.key === "Shift"){
+
+
+        }else        if(e.key === "Backspace"){
+        content+=`<input type="radio" checked>`;
+        document.getElementById("loom").innerHTML= content;
+
+
+        }else        if(e.key === "ArrowLeft"){
+                endiv();
+
+        }else if(e.key == "ArrowRight"){
+div()
+
+        }else if(e.key.length>1 ){
+                if(e.key.length%2 ==0){
+                        div()
+
+                }else{
+endiv();
+
+                }
+
+        }else{
+
+        
+        content+=e.key;
+
+document.getElementById("loom").innerHTML= content;
+}
+
+        });
+
+</script>
+  <style>
+    body{
+        margin: 4px;
+        margin:auto;
+        max-width: 800px;;
+        /* border: 4px solid black; */
+    }
+  div{
+      border: 1px dashed black;
+  }
+  div:hover{
+        border-color:rebeccapurple;
+  }
+  #loom{
+        margin: 8px;
+        border: 4px solid black;
+  }
+  #loom:hover{
+          background-color: white;
+  }
+ #instructions{
+         margin:8px;
+         padding:8px;
+ }
+  button{
+          /* margin:auto; */
+          height: 34px;
+  }
+  </style>
+  
+  <body>
+          <div id="instructions">
+
+          <h3> &lt;divloom></h3>
+          <p>
+Use the <b>left</b> and <b>right</b> arrow keys to weave.
+ <!-- (add &lt;divs> and &lt;/div>). -->
+<br>
+You can also type letters, or press Backspace and Enter.
+                  
+          </p>
+                <button onclick="div()">&lt;div></button>
+                <button onclick="endiv()">&lt;/div></button>
+        </div>
+
+                <div id="loom">
+          <div><div>
+          <div><div>
+    </div>
+</body>
+
+   
+</html>

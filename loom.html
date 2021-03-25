@@ -1,75 +1,56 @@
 <html>
   <head> <title>divloom</title>
-        <head> 
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         </head>
   <script>
+let content = "";
 
-let content = ""
-
-function div(e){
-content+="<div>"
-document.getElementById("loom").innerHTML= content;
-e.preventDefault();
+function div(e) {
+  content += "<div>";
+  content += "<div>";
+  document.getElementById("loom").innerHTML = content;
+  e.preventDefault();
 }
-function endiv(){
-content+="</div>"
-content+="</div>"
-content+="</div>"
-content+="</div>"
-content+="<div>"
+function endiv() {
+  content += "</div>";
+  content += "</div>";
+  content += "</div>";
+  content += "</div>";
+  content += "<div>";
 
-document.getElementById("loom").innerHTML= content;
+  document.getElementById("loom").innerHTML = content;
 }
-document.addEventListener("keydown",(e)=>{
-        console.log(e.key)
-        if(e.key === "Enter"){
-        content+=`<input type="radio">`;
-        document.getElementById("loom").innerHTML= content;
+document.addEventListener("keydown", (e) => {
+  console.log(e.key);
+  if (e.key === "Enter") {
+    content += `<input type="radio">`;
+  }else if (e.key === " ") {
+//     content += `<button></button>`;
+    content += `<hr></hr>`;
+  } else if (e.key === "Shift") {
+   content += `<input type="checkbox" checked>`;
+} else if (e.key === "Control") {
+   content += `<input type="checkbox" >`;
+  } else if (e.key === "Backspace") {
+    content += `<input type="radio" checked>`;
+  } else if (e.key === "ArrowLeft") {
+    endiv();
+  } else if (e.key == "ArrowRight") {
+    div();
+  } else if (e.key.length > 1) {
+    if (e.key.length % 3          == 0) {
+      div();
+    } else {
+      endiv();
+    }
+  } else {
+    content += e.key;
 
+  }
+  document.getElementById("loom").innerHTML = content;
 
-        }if(e.key === " "){
-        content+=` `;
-        document.getElementById("loom").innerHTML= content;
-
-
-        }
-        
-        
-        else
-        if(e.key === "Shift"){
-
-
-        }else        if(e.key === "Backspace"){
-        content+=`<input type="radio" checked>`;
-        document.getElementById("loom").innerHTML= content;
-
-
-        }else        if(e.key === "ArrowLeft"){
-                endiv();
-
-        }else if(e.key == "ArrowRight"){
-div()
-
-        }else if(e.key.length>1 ){
-                if(e.key.length%2 ==0){
-                        div()
-
-                }else{
-endiv();
-
-                }
-
-        }else{
-
-        
-        content+=e.key;
-
-document.getElementById("loom").innerHTML= content;
-}
-
-        });
+});
 
 </script>
   <style>
@@ -81,37 +62,44 @@ document.getElementById("loom").innerHTML= content;
         max-width: 600px;;
         /* border: 4px solid black; */
     }
+    hr{
+            margin-top: 1px ;
+            margin-bottom: 1px ;
+            border:   solid black 1px;
+            /* border-top: none; */
+    }
   div{
         touch-action: manipulation;
 
       border: 1px dashed black;
   }
 
-  @media (-webkit-min-device-pixel-ratio: 2) { 
-        div{
-      border: 2px dotted black;
-      
-  }
-  div:hover{
+  
+  div:hover, hr:hover, input:hover{
         border-color:rebeccapurple;
+
   }
   #loom{
-        margin: 8px;
-        border: 4px solid black;
+        /* border: 4px solid black; */
   }
   #loom:hover{
-          background-color: white;
+          /* background-color: white; */
   }
  #instructions{
-         margin:8px;
-         padding:8px;
+         /* margin:8px; */
+         /* padding:8px; */
  }
   button{
         touch-action: manipulation;
 
           /* margin:auto; */
-          height: 34px;
-          width: 40%
+          height: 22px;
+          min-width: 44px;
+  }
+  @media (-webkit-min-device-pixel-ratio: 2) { 
+        div{
+      border: 2px dotted black;
+        }
   }
   @media only screen and (max-width: 600px) {
         buttons {
@@ -129,10 +117,10 @@ document.getElementById("loom").innerHTML= content;
 
           <h3> &lt;divloom></h3>
           <p>
-Use the <b>left</b> and <b>right</b> arrow keys to weave.
+Use the <b>spacebar</b> and <b>arrow keys</b> to weave.
  <!-- (add &lt;divs> and &lt;/div>). -->
 <br>
-You can also type letters, or press Backspace and Enter.
+You can also type letters, or press Backspace, Shift, Control, and Enter.
                   
           </p>
           <buttons>
@@ -148,6 +136,7 @@ You can also type letters, or press Backspace and Enter.
           <div><div>
     </div>
 </body>
+
 
    
 </html>
